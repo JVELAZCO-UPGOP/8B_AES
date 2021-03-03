@@ -10,20 +10,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!--Estos links son para los iconos-->  
+    <!--Estos links son para los iconos-->    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
-    <!--fin-->
+    <!--Fin-->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Hello, world!</title>
+    <title>Propietarios</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Inicio NAV -->
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <a class="navbar-brand" href="#">Veterinaria</a>
+            <a class="navbar-brand" href="#">Veterinaria Crazy Dog</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
                 aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,15 +38,15 @@
                   <a class="nav-link" href="/medicoveterinario.html"> Médico Veterinario</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/consultas.html">Consulitas</a>
+                  <a class="nav-link" href="/consultas.html">Consultas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/duenos.html">Dueños</a>
+                  <a class="nav-link" href="/duenos.html">Propietarios</a>
                 </li>
               </ul>
                 <form class="form-inline">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>
         </nav>
@@ -54,7 +54,7 @@
     </div>
     <!--Inicia boton agregar-->
         <div class="actions-menu">
-            <h1>Mascotas</h1>
+            <h1>Propietarios de las Mascotas</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Agregar
             </button>
@@ -65,24 +65,26 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Pais</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Dueño</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Apellido Materno</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody id="lista-mascotas">
+            <tbody id="lista-duenos">
                 
             </tbody>
         </table>
         <!--Fin-->
     </div>
     <!--Inicia modal-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Nueva Mascota</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Propietario</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -91,29 +93,36 @@
                 <form id="form">
                     <input type="hidden" id="indice" >
                     <div class="form-row">
-                        <div class="col">
-                            <select id="tipo" class="form-control">
-                              <option>Tipo animal</option>
-                              <option>Perro</option>
-                              <option>Gato</option>
-                              <option>Pájaro</option>
-                              <option>Otro</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-row">
+                      <div class="col">
+                        <select class="form-control" id="pais">
+                          <option>Pais</option>
+                          <option>Mexico</option>
+                          <option>Colombia</option>
+                          <option>Argentina</option>
+                          <option>España</option>
+                          <option>Bolivia</option>
+                          <option>Venezuela</option>
+                          <option>Alemania</option>
+                          <option>Brasil</option>
+                          <option>Canadá</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <input type="text" id="identificacion" name="identificacion" class="form-control" placeholder="Identificacion">
+                      </div>
+                    </div>
+                      <div class="form-row">
                       <div class="col">
                         <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
                       </div>
                       <div class="col">
-                        <select class="form-control" id="dueno">
-                          <option>Dueño</option>
-                          <option>Juan</option>
-                          <option>Andrea</option>
-                          <option>Carlos</option>
-                          <option>Karla</option>
-                        </select>
-                    </div>
+                        <input type="text" id="apellidoP" name="apellidoP" class="form-control" placeholder="Apellido Paterno">
+                      </div>
+                      <div class="col">
+                        <input type="text" id="apellidoM" name="apellidoM" class="form-control" placeholder="Apellido Materno">
+                      </div>
                     </div>
 
                   </form>
@@ -139,8 +148,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-        <!--Esto sonmlink para los iconos-->
+        <!--Estos links son para los iconos-->
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
-    <!--Esto es para el js-->
-    <script src="/js/mascotas.js"></script>
+    
+    <!--Esta linea es para el js-->
+    <script src="/js/duenos.js"></script>

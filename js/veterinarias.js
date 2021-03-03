@@ -1,28 +1,31 @@
-
-const tipo = document.getElementById('tipo'); //almacenar las variables
+const pais = document.getElementById('pais'); //almacenar las variables
 const nombre = document.getElementById('nombre'); 
-const propietarios = document.getElementById('propietarios'); 
+const identificacion = document.getElementById('identificacion'); 
+const apellidoP = document.getElementById('apellidoP'); 
+const apellidoM = document.getElementById('apellidoM'); 
 const indice = document.getElementById('indice'); 
 const form = document.getElementById('form'); 
 const btnGuardar = document.getElementById('btn-guardar'); 
 const btnEliminar = document.getElementById('btn-eliminar'); 
 const titulo = document.getElementById('exampleModalCenterTitle'); 
 
+const listaVeterinarias = document.getElementById('lista-Veterinarias'); 
 
-
-const listaMascotas = document.getElementById('lista-mascotas'); 
-
-let mascotas=[         //lista
+let veterinarias=[          //lista
     {
-        tipo:"Gato",
-        nombre:"Michis",
-        propietarios:"Andrea"
+        nombre:"Alejandra",
+        apellidoP:"Gonzales",
+        apellidoM:"Garcia",
+        pais:"Venezuela",
+        identificacion:"28012731"
 
     },
     {
-        tipo:"Perro",
-        nombre:"Tobby",
-        propietarios:"Juan"
+        nombre:"Daniel",
+        apellidoP:"Lopez",
+        apellidoM:"Perez",
+        pais:"Colombia",
+        identificacion:"28012732"
 
     }
 ];
@@ -30,12 +33,14 @@ let mascotas=[         //lista
 
 //Renderizar variable Mascotas en el HTML
 
-function listarMascotas(){//ejecute
-    const htmlMascotas = mascotas.map((mascota, index)=>`<tr>
+function listaVeterniarias(){//ejecute
+    const htmlVeterinarias = veterinarias.map((veterinario, index)=>`<tr>
         <th scope="row">${index} </th>
-        <td>${mascota.tipo}</td>
-        <td>${mascota.nombre}</td>
-        <td>${mascota.propietarios}</td>
+        <td>${veterinario.identificacion}</td>
+        <td>${veterinario.pais}</td>
+        <td>${veterinario.nombre}</td>
+        <td>${veterinario.apellidoP}</td>
+        <td>${veterinario.apellidoM}</td>
         <td><!--Votones de editar y eliminar datos-->
         <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-info editar" ><i class="far fa-edit"></i></button>
@@ -43,62 +48,69 @@ function listarMascotas(){//ejecute
         </div>
         </td>
     </tr>`).join("");
-    listaMascotas.innerHTML=htmlMascotas;//esto limpia el todo el contenido de mascotas
+    listaVeterinarias.innerHTML=htmlVeterinarias;//esto limpia el todo el contenido de mascotas
     Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index)=>botonEditar.onclick = editar(index));
     Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index)=>botonEliminar.onclick = eliminar(index));
 
 }
 
-function enviarDatos(evento){        //enviar datos
+function enviarDatos(evento){          //Enviar datos
     evento.preventDefault();
     const datos = {
-        tipo: tipo.value,
-        nombre: nombre.value,
-        propietarios: propietarios.value
+        nombre:nombre.value,
+        apellidoP:apellidoP.value,
+        apellidoM:apellidoM.value,
+        pais:pais.value,
+        identificacion:identificacion.value
     };
     const accion=btnGuardar.innerHTML;
     switch(accion){
         case 'Editar':
             //editar
-            mascotas[indice.value]=datos
+            veterinarias[indice.value]=datos
             break;
             default:
                 //crear
-                mascotas.push(datos);
+                veterinarias.push(datos);
             break;
     }
 
-    listarMascotas();//ejecutalo
+    listaVeterniarias();//ejecutalo
     resetModal();
 }
 
-function editar(index) {          //editar
+function editar(index) {//editar
     return function cuandohagoclick(){
         
         $('.modal').on('hidden.bs.modal', function(){ // Returns a Bootstrap modal instance
             $(this).find('form')[0].reset();
             btnGuardar.innerHTML='Crear'
-            exampleModalCenterTitle.innerHTML='Nueva Mascota'
+            exampleModalCenterTitle.innerHTML='Nuevo Medico Veterinario'
         });
         btnGuardar.innerHTML='Editar'//Cambiar nom del boton
         exampleModalCenterTitle.innerHTML='Editar'
         $('#exampleModalCenter').modal('toggle')
         
-        const mascota=mascotas[index];
-        nombre.value=mascota.nombre;
-        propietarios.value=mascota.propietarios;
-        tipo.value=mascota.tipo;
+        const veterinario=veterinarias[index];
+        nombre.value=veterinario.nombre;
+        apellidoP.value=veterinario.apellidoP;
+        apellidoM.value=veterinario.apellidoM;
+        pais.value=veterinario.pais;
+        identificacion.value=veterinario.identificacion;
         indice.value=index;
     }
 }
 
 
 
-function resetModal(){       //Restaurar
+function resetModal(){
    
-    nombre.value='Nombre';
-    propietarios.value='Propietarios';
-    tipo.value='Tipo animal';
+   
+    nombre.value="Nombre";
+    apellidoP.value="Apellido Paterno";
+    apellidoM.value="Apellido Materno";
+    pais.value="Pais";
+    identificacion.value="Identificacion";
     indice.value='';
     btnGuardar.innerHTML='Crear'
 }
@@ -109,15 +121,15 @@ function eliminar(index){                               //Eliminar
        if(confirm("¿Está seguro que desea eliminar el registro?"))
        {
         
-        mascotas = mascotas.filter((mascota, indiceMascota)=>indiceMascota !== index);
+        veterinarias = veterinarias.filter((veterinario, indiceVeterinaria)=>indiceVeterinaria !== index);
 
        }
     
-        listarMascotas();
+        listaVeterniarias();
     }
 }
 
-listarMascotas();
+listaVeterniarias();
 
 form.onsubmit = enviarDatos;
 btnGuardar.onclick = enviarDatos;

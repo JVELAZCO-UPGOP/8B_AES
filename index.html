@@ -16,14 +16,14 @@
     <!--fin-->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Hello, world!</title>
+    <title>Veterinaria</title>
 </head>
 
 <body>
     <div class="container">
         <!-- Inicio NAV -->
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-            <a class="navbar-brand" href="#">Veterinaria</a>
+            <a class="navbar-brand" href="#">Veterinaria Crazy Dog</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
                 aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -38,7 +38,7 @@
                   <a class="nav-link" href="/medicoveterinario.html"> Médico Veterinario</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/consultas.html">Consulitas</a>
+                  <a class="nav-link" href="/consultas.html">Consultas</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/duenos.html">Propietarios</a>
@@ -66,7 +66,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombre de la Mascota</th>
                     <th scope="col">Propietarios</th>
                     <th scope="col"></th>
                 </tr>
@@ -78,7 +78,7 @@
         <!--Fin-->
     </div>
     <!--Inicia modal-->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -97,6 +97,9 @@
                               <option>Perro</option>
                               <option>Gato</option>
                               <option>Pájaro</option>
+                              <option>Reptiles</option>
+                              <option>hamsters</option>
+                              <option>hurones</option>
                               <option>Otro</option>
                             </select>
                         </div>
@@ -112,6 +115,8 @@
                           <option>Andrea</option>
                           <option>Carlos</option>
                           <option>Karla</option>
+                          <option>Jose</option>
+                          <option>Mary</option>
                         </select>
                     </div>
                     </div>
@@ -119,7 +124,7 @@
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-eliminar">Cerrar</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
             </div>
           </div>
