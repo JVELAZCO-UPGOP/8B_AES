@@ -16,9 +16,8 @@
     <!--Fin-->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Medicos Veterinarios</title>
+    <title>Propietarios</title>
 </head>
-
 
 <body>
     <div class="container">
@@ -33,16 +32,16 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/index.html">Mascotas</a>
-                </li>
-                <li class="nav-item"> 
-                  <a class="nav-link" href="/medicoveterinario.html"> Médico Veterinario</a>
+                  <a class="nav-link active" aria-current="page" href="/veterinaria-fullstack/frontend/index.html">Mascotas</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/consultas.html">Consultas</a>
+                  <a class="nav-link" href="/veterinaria-fullstack/frontend/medicoveterinario.html"> Médico Veterinario</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/duenos.html">Propietarios</a>
+                  <a class="nav-link" href="/veterinaria-fullstack/frontend/consultas.html">Consultas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/veterinaria-fullstack/frontend/duenos.html">Propietarios</a>
                 </li>
               </ul>
                 <form class="form-inline">
@@ -51,11 +50,12 @@
                 </form>
             </div>
         </nav>
-        <!-- fin NAV -->
+        <!-- fin NAV --> 
     </div>
+    
     <!--Inicia boton agregar-->
         <div class="actions-menu">
-            <h1>Medicos Veterinarios</h1>
+            <h1>Propietarios de las Mascotas</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Agregar
             </button>
@@ -74,7 +74,7 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody id="lista-Veterinarias">
+            <tbody id="lista-duenos">
                 
             </tbody>
         </table>
@@ -85,7 +85,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Medico Veterinario</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Propietario</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -154,4 +154,4 @@
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
     
     <!--Esta linea es para el js-->
-    <script src="/js/veterinarias.js"></script>
+    <script src="/veterinaria-fullstack/frontend/js/duenos.js"></script>
