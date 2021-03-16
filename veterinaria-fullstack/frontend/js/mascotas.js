@@ -7,70 +7,110 @@ const form = document.getElementById('form');
 const btnGuardar = document.getElementById('btn-guardar'); 
 const btnEliminar = document.getElementById('btn-eliminar'); 
 const titulo = document.getElementById('exampleModalCenterTitle'); 
-
-
-
 const listaMascotas = document.getElementById('lista-mascotas'); 
+const url = "http://localhost:5000/mascotas";
 
-let mascotas=[         //lista
-    {
-        tipo:"Gato",
-        nombre:"Michis",
-        propietarios:"Andrea"
 
-    },
-    {
-        tipo:"Perro",
-        nombre:"Tobby",
-        propietarios:"Juan"
-
-    }
-];
-
+let mascotas=[];
 
 //Renderizar variable Mascotas en el HTML
 
-function listarMascotas(){//ejecute
-    const htmlMascotas = mascotas.map((mascota, index)=>`<tr>
-        <th scope="row">${index} </th>
-        <td>${mascota.tipo}</td>
-        <td>${mascota.nombre}</td>
-        <td>${mascota.propietarios}</td>
-        <td><!--Votones de editar y eliminar datos-->
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-info editar" ><i class="far fa-edit"></i></button>
-            <button type="button" class="btn btn-danger eliminar"><i class="far fa-trash-alt"></i></button>
-        </div>
-        </td>
-    </tr>`).join("");
-    listaMascotas.innerHTML=htmlMascotas;//esto limpia el todo el contenido de mascotas
-    Array.from(document.getElementsByClassName("editar")).forEach((botonEditar, index)=>botonEditar.onclick = editar(index));
-    Array.from(document.getElementsByClassName("eliminar")).forEach((botonEliminar, index)=>botonEliminar.onclick = eliminar(index));
-
+async function listarMascotas(){//ejecute
+    try {
+        const respuesta = await fetch(url);
+        const mascotasDelServer = await respuesta.json();
+        if (Array.isArray(mascotasDelServer)) {
+            mascotas = mascotasDelServer;
+          }
+          if (mascotas.length > 0) {
+            const htmlMascotas = mascotas
+              .map(
+                (mascota, index) => `<tr>
+            <th scope="row">${index}</th>
+            <td>${mascota.tipo}</td>
+            <td>${mascota.nombre}</td>
+            <td>${mascota.propietarios}</td>
+            <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-info editar"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-danger eliminar"><i class="far fa-trash-alt"></i></button>
+                </div>
+            </td>
+          </tr>`
+              )
+              .join("");
+            listaMascotas.innerHTML = htmlMascotas;
+            Array.from(document.getElementsByClassName("editar")).forEach(
+              (botonEditar, index) => (botonEditar.onclick = editar(index))
+            );
+            Array.from(document.getElementsByClassName("eliminar")).forEach(
+              (botonEliminar, index) => (botonEliminar.onclick = eliminar(index))
+            );
+            return;
+          }
+          listaMascotas.innerHTML = `<tr>
+              <td colspan="5" class="lista-vacia">No hay mascotas</td>
+            </tr>`;
+        
+    } catch (error) {
+      console.log({ error });
+        $(".alert-danger").show(); // . show muestra las elertas desde Javascript
+    }
 }
 
 
-function enviarDatos(evento){        //enviar datos
+async function enviarDatos(evento) {
     evento.preventDefault();
-    const datos = {
+    try {
+      const datos = {
         tipo: tipo.value,
         nombre: nombre.value,
-        propietarios: propietarios.value
-    };
-    const accion=btnGuardar.innerHTML;
-    switch(accion){
-        case 'Editar':
-            //editar
-            mascotas[indice.value]=datos
-            break;
-            default:
-                //crear
-                mascotas.push(datos);
-            break;
+        propietarios: propietarios.value,
+      };
+    if (validar(datos)=== true) {
+      let method = "POST";
+      let urlEnvio = url;
+      const accion = btnGuardar.innerHTML;
+      if (accion === "Editar") {
+        method = "PUT";
+        mascotas[indice.value] = datos;
+        urlEnvio = `${url}/${indice.value}`;
+      }
+      const respuesta = await fetch(urlEnvio, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(datos),
+        mode: "cors",
+      });
+      if (respuesta.ok) {
+        listarMascotas();
+        resetModal();
+      }
+      return  ;
     }
+    $(".alert-warning").show();
+    } catch (error) {
+      console.log({ error });
+      $(".alert-danger").show();
+    }
+  }
 
-    listarMascotas();//ejecutalo
-    resetModal();
+function validar(datos) {
+  if (typeof datos !== "object") return false;
+  let respuesta = true;
+  for (let llave in datos) {
+    if (datos[llave].length === 0) {
+      document.getElementById(llave).classList.add("is-invalid");
+      respuesta = false;
+    } else {
+      document.getElementById(llave).classList.remove("is-invalid");      
+      document.getElementById(llave).classList.add("is-valid");
+    }
+  }
+  if (respuesta === true) $(".alert-warning").hide();
+  return respuesta;
 }
 
 function editar(index) {          //editar
@@ -93,32 +133,58 @@ function editar(index) {          //editar
     }
 }
 
+function resetModal() {
+  btnGuardar.innerHTML = "Crear";
+  
+  [indice, nombre, propietarios, tipo ].forEach(
+  (inputActual) => {
+      inputActual.value = "";
+      tipo.value="Tipo animal";
+      propietarios.value="Propietarios";
+      inputActual.classList.remove("is-invalid");
+      inputActual.classList.remove("is-valid");
+  }
+  );
+  $(".alert-warning").hide();
+  //$("#exampleModalCenter").modal("toggle");
+}
 
-
-function resetModal(){       //Restaurar
+// function resetModal(){       //Restaurar
    
-    nombre.value='Nombre';
-    propietarios.value='Propietarios';
-    tipo.value='Tipo animal';
-    indice.value='';
-    btnGuardar.innerHTML='Crear'
-}
+//     nombre.value='Nombre';
+//     propietarios.value='Propietarios';
+//     tipo.value='Tipo animal';
+//     indice.value='';
+//     btnGuardar.innerHTML='Crear'
+// }
 
 
-function eliminar(index){                               //Eliminar
-    return function clickEnEliminar(){
-       if(confirm("¿Está seguro que desea eliminar el registro?"))
-       {
+function eliminar(index){     
+    const urlEnvio = `${url}/${index}`;                        //Eliminar
+    return async function clickEnEliminar(){
+      try {
+        if(confirm("¿Está seguro que desea eliminar el registro?")){
         
-        mascotas = mascotas.filter((mascota, indiceMascota)=>indiceMascota !== index);
-
-       }
-    
-        listarMascotas();
+          const respuesta = await fetch(urlEnvio, {
+            method:'DELETE',
+           
+          });
+          if (respuesta.ok) {
+            listarMascotas();
+            resetModal();
+          }
+        }
+      } catch (error) {
+        console.log({ error });
+      $(".alert").show();
     }
-}
+  }
+};
+
 
 listarMascotas();
+
+
 
 form.onsubmit = enviarDatos;
 btnGuardar.onclick = enviarDatos;

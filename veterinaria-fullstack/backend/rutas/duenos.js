@@ -29,16 +29,16 @@ module.exports = function duenosHandler(duenos) {
             }
             callback(400, {mensaje : "indice no enviado"});
         },
-        delete: (data, callback) => {//creando un handler eliminar duenos
+        delete: (data, callback) => {//creando un handler eliminar dueno
             if (typeof data.indice !== "undefined") {
                 if (duenos[data.indice]) {
                     duenos = duenos.filter(
-                        (_dueno, indice) => indice != data.indice
+                        (duenos, indice) => indice != data.indice
                     );
                     return callback(204, {mensaje: `elemento con indice ${data.indice} eliminado`});
                 }
                 return callback(404,{
-                    mensaje: `dueno con indice ${data.indice} no encontrado`,
+                    mensaje: `duenos con indice ${data.indice} no encontrado`,
                 });
             }
             callback(400, {mensaje : "indice no enviado"});

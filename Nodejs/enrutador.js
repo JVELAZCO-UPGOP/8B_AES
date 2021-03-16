@@ -1,7 +1,7 @@
 const recursos = require("./recursos");
 const mascotas = require("./rutas/mascotas");
 const veterinarias = require("./rutas/veterinarias");
-const duenos = require("./rutas/duenos");
+const propietarios = require("./rutas/duenos");
 const consultas = require("./rutas/consultas");
 
 module.exports = {

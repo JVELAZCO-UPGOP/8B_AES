@@ -17,6 +17,23 @@ module.exports = (req, res) =>{//para exportar
     //3.1.Obtener el metodo http
     const metodo= req.method.toLowerCase();//estemetodo las cambia a minusculas
 
+    //3.1.1 dar permisos de CORS escribiendo los headers
+    res.setHeader("Access-Control-Allow-Origin", "*");//
+    res.setHeader("Access-Control-Request-Methods", 
+    "OPTIONS,GET,PUT,DELETE,POST"
+    );//
+    res.setHeader("Access-Control-Allow-Methods", 
+    "OPTIONS,GET,PUT,DELETE,POST"
+    );//
+    res.setHeader("Access-Control-Allow-Headers", "*");//
+
+    //3.1.2 Dar respuesta inmediata cuando el metodo sea options
+    if (metodo === 'options') {
+        res.writeHead(200);
+        res.end();
+        return;
+    }
+
     //3.2.Obtener variables del query url
     const { query = {} } = urlParseada;//se le agregan las llaves si no tiene query
 
@@ -43,7 +60,7 @@ module.exports = (req, res) =>{//para exportar
     //3.4.3 Revisar si tiene subrutas en este caso es el indice de la array
     if (rutaLimpia.indexOf("/")> -1) {
         //separa las rutas
-       var [rutaPrincipal,indice] = rutaLimpia.split("/");
+        var [rutaPrincipal,indice] = rutaLimpia.split("/");
 
     }
 

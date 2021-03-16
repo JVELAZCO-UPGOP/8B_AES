@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
     <!--fin-->
-    <link rel="stylesheet" href="css/styles.css" >
+    <link rel="stylesheet" href="./css/styles.css" >
 
     <title>Consultas</title>
 </head>
@@ -54,10 +54,24 @@
     </div>
     <!--Inicia boton agregar-->
         <div class="actions-menu">
-            <h1>Mascotas</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Agregar
-            </button>
+            <h1>Consultas</h1>
+            <div class= "actions-menu-content"> 
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Agregar
+              </button>
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Oops Bitch xp!</strong>  Le falto llenar datos.... ←_←
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Oops Bitch xp!</strong>  Algo hizo mal, Vuelva a intentarlo ¯\(°_o)/¯.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
         </div>
         
         <!--Fin -->
@@ -66,18 +80,23 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Dueño</th>
+                    <th scope="col">Mascota</th>
+                    <th scope="col">Medico Veterinario</th>
+                    <th scope="col">Identificador Del Medico</th>
+                    <th scope="col">Historia</th>
+                    <th scope="col">Diagnostico</th>
+                    <th scope="col">Fecha de Creacion</th>
+                    <th scope="col">Fecha de Edicion</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody id="lista-mascotas">
+            <tbody id="lista-consultas">
                 
             </tbody>
         </table>
         <!--Fin-->
     </div>
+    
     <!--Inicia modal-->
     <div class="modal fade" id="exampleModalCenter" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -89,40 +108,53 @@
               </button>
             </div>
             <div class="modal-body">
-                <form id="form">
+                <form class="needs-validation"  id="form">
                     <input type="hidden" id="indice" >
                     <div class="form-row">
                         <div class="col">
-                            <select id="tipo" class="form-control">
-                              <option>Tipo animal</option>
-                              <option>Perro</option>
-                              <option>Gato</option>
-                              <option>Pájaro</option>
-                              <option>Otro</option>
+                            <select id="mascota" class="form-control">
+                              <option value="">Seleccione Mascota</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                       <div class="col">
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                          <select id="veterinaria" class="form-control">
+                            <option value="" >Seleccione Medico Veterinario</option>
+                          </select>
                       </div>
+                  </div>
+                    <div class="form-row">
                       <div class="col">
-                        <select class="form-control" id="dueno">
-                          <option>Dueño</option>
-                          <option>Juan</option>
-                          <option>Andrea</option>
-                          <option>Carlos</option>
-                          <option>Karla</option>
-                        </select>
+                        <textarea id="historia" class="form-control" placeholder="Historia"></textarea>
+                      </div>
                     </div>
-                    </div>
-
-                  </form>
+                    <div class="form-row">
+                      <div class="col">
+                          <select id="diagnostico" class="form-control">
+                            <option value="">Seleccione Diagnostico</option>
+                            <option>Purito de piel (sarna)</option>
+                            <option>Moquillo</option>
+                            <option>Trauma cefàlico</option>
+                            <option>Parvovirosis</option>
+                            <option>Viroris</option>
+                            <option>Rabia</option>
+                            <option>Paràsitos</option>
+                            <option>Filarias</option>
+                            <option>Hepatitis</option>
+                            <option>Gastroenteritis</option>
+                            <option>Fractura</option>
+                          </select>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
-            </div>
+          </div>
+            
           </div>
         </div>
     </div>
@@ -144,4 +176,4 @@
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
     <!--Esta es para el js-->
-    <script src="/veterinaria-fullstack/frontend/js/mascotas.js"></script>
+    <script src="./js/consultas.js"></script>

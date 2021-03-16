@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
     <!--Fin-->
-    <link rel="stylesheet" href="css/styles.css" >
+    <link rel="stylesheet" href="./css/styles.css" >
 
     <title>Medicos Veterinarios</title>
 </head>
@@ -56,9 +56,23 @@
     <!--Inicia boton agregar-->
         <div class="actions-menu">
             <h1>Medicos Veterinarios</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Agregar
-            </button>
+            <div class= "actions-menu-content"> 
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Agregar
+              </button>
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Oops Bitch xp!</strong>  Le falto llenar datos.... ←_←
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Oops Bitch xp!</strong>  Algo hizo mal, Vuelva a intentarlo ¯\(°_o)/¯.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
         </div>
         <!--Fin -->
         <!--  Inicia Tabla-->
@@ -154,4 +168,4 @@
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
     
     <!--Esta linea es para el js-->
-    <script src="/js/veterinarias.js"></script>
+    <script src="./js/veterinarias.js"></script>
