@@ -8,7 +8,6 @@ const form = document.getElementById('form');
 const btnGuardar = document.getElementById('btn-guardar'); 
 const btnEliminar = document.getElementById('btn-eliminar'); 
 const titulo = document.getElementById('exampleModalCenterTitle'); 
-
 const listaVeterinarias = document.getElementById('lista-Veterinarias'); 
 
 

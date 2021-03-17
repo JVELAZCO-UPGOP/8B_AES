@@ -8,9 +8,8 @@ const form = document.getElementById('form');
 const btnGuardar = document.getElementById('btn-guardar'); 
 const btnEliminar = document.getElementById('btn-eliminar'); 
 const titulo = document.getElementById('exampleModalCenterTitle'); 
-const url = "http://localhost:5000/duenos";
+const url = "https://veterinaria-backend1.vercel.app/duenos";
 const listaDuenos = document.getElementById('lista-duenos'); 
-
 
 
 let duenos = [];          //lista

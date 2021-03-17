@@ -1,4 +1,3 @@
-
 const tipo = document.getElementById('tipo'); //almacenar las variables
 const nombre = document.getElementById('nombre'); 
 const propietarios = document.getElementById('propietarios'); 
@@ -8,7 +7,7 @@ const btnGuardar = document.getElementById('btn-guardar');
 const btnEliminar = document.getElementById('btn-eliminar'); 
 const titulo = document.getElementById('exampleModalCenterTitle'); 
 const listaMascotas = document.getElementById('lista-mascotas'); 
-const url = "http://localhost:5000//mascotas";
+const url = "https://veterinaria-backend1.vercel.app/mascotas";
 
 
 let mascotas=[];

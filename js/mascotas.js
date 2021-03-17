@@ -9,7 +9,6 @@ const btnEliminar = document.getElementById('btn-eliminar');
 const titulo = document.getElementById('exampleModalCenterTitle'); 
 
 
-
 const listaMascotas = document.getElementById('lista-mascotas'); 
 
 let mascotas=[         //lista

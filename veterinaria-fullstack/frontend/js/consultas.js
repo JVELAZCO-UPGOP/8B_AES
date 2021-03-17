@@ -12,7 +12,7 @@ let mascotas = [];
 let veterinarias = [];
 
 
-const url = "http://localhost:5000/";
+const url = "https://veterinaria-backend1.vercel.app";
 
 async function listarConsultas(){
   const entidad="consultas";
@@ -211,6 +211,4 @@ function validar(datos) {
   if (respuesta === true) $(".alert-warning").hide();
   return respuesta;
 }
-
-
 
