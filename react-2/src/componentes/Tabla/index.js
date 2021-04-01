@@ -24,7 +24,7 @@ function Tabla() {
             <Encabezado columnas={columnas} />
             <tbody id="lista-mascotas">
             {mascotas.map((mascota, index) => (
-           <Fila mascota={mascota} index={index} />
+            <Fila mascota={mascota} index={index} />
             ))}
             </tbody>
         </table>
