@@ -33,7 +33,7 @@ module.exports = function duenosHandler(duenos) {
             if (typeof data.indice !== "undefined") {
                 if (duenos[data.indice]) {
                     duenos = duenos.filter(
-                        (duenos, indice) => indice != data.indice
+                        (_duenos, indice) => indice != data.indice
                     );
                     return callback(204, {mensaje: `elemento con indice ${data.indice} eliminado`});
                 }

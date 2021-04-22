@@ -57,7 +57,6 @@ async function listarMascotas(){//ejecute
     }
 }
 
-
 async function enviarDatos(evento) {
     evento.preventDefault();
     try {

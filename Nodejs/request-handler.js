@@ -43,7 +43,7 @@ module.exports = (req, res) =>{//para exportar
     //3.4.3 Revisar si tiene subrutas en este caso es el indice de la array
     if (rutaLimpia.indexOf("/")> -1) {
         //separa las rutas
-       var [rutaPrincipal,indice] = rutaLimpia.split("/");
+        var [rutaPrincipal,indice] = rutaLimpia.split("/");
 
     }
 

@@ -10,15 +10,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!--Estos links son para los iconos-->  
+    <!--Estos links son para los iconos-->    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/v4-shims.css">
-    <!--fin-->
+    <!--Fin-->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Veterinaria</title>
+    <title>Medicos Veterinarios</title>
 </head>
-
 <body>
     <div class="container">
         <!-- Inicio NAV -->
@@ -29,12 +28,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor03"> 
+            <div class="collapse navbar-collapse" id="navbarColor03">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="/index.html">Mascotas</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"> 
                   <a class="nav-link" href="/medicoveterinario.html"> Médico Veterinario</a>
                 </li>
                 <li class="nav-item">
@@ -54,7 +53,7 @@
     </div>
     <!--Inicia boton agregar-->
         <div class="actions-menu">
-            <h1>Mascotas</h1>
+            <h1>Medicos Veterinarios</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                 Agregar
             </button>
@@ -65,13 +64,15 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Nombre de la Mascota</th>
-                    <th scope="col">Propietarios</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Apellido Materno</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody id="lista-mascotas"><!--Esta es la variable-->
+            <tbody id="lista-Veterinarias">
                 
             </tbody>
         </table>
@@ -82,49 +83,51 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Nueva Mascota</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Medico Veterinario</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <form id="form"><!--Agregamos id-->
-                    <input type="hidden" id="indice" ><!--para editar-->
+                <form id="form">
+                    <input type="hidden" id="indice" >
                     <div class="form-row">
-                        <div class="col">
-                            <select id="tipo" class="form-control"><!--Agregamos id-->
-                              <option>Tipo animal</option>
-                              <option>Perro</option>
-                              <option>Gato</option>
-                              <option>Pájaro</option>
-                              <option>Reptiles</option>
-                              <option>hamsters</option>
-                              <option>hurones</option>
-                              <option>Otro</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="form-row">
                       <div class="col">
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre"><!--Agregamos id-->
+                        <select class="form-control" id="pais">
+                          <option>Pais</option>
+                          <option>Mexico</option>
+                          <option>Colombia</option>
+                          <option>Argentina</option>
+                          <option>España</option>
+                          <option>Bolivia</option>
+                          <option>Venezuela</option>
+                          <option>Alemania</option>
+                          <option>Brasil</option>
+                          <option>Canadá</option>
+                        </select>
                       </div>
                       <div class="col">
-                        <select class="form-control" id="propietarios"><!--Agregamos id-->
-                          <option>Propietarios</option>
-                          <option>Juan</option>
-                          <option>Andrea</option>
-                          <option>Carlos</option>
-                          <option>Karla</option>
-                          <option>Jose</option>
-                          <option>Mary</option>
-                        </select>
+                        <input type="text" id="identificacion" name="identificacion" class="form-control" placeholder="Identificacion">
+                      </div>
                     </div>
+                      <div class="form-row">
+                      <div class="col">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                      </div>
+                      <div class="col">
+                        <input type="text" id="apellidoP" name="apellidoP" class="form-control" placeholder="Apellido Paterno">
+                      </div>
+                      <div class="col">
+                        <input type="text" id="apellidoM" name="apellidoM" class="form-control" placeholder="Apellido Materno">
+                      </div>
                     </div>
 
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-eliminar">Cerrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
             </div>
           </div>
@@ -144,11 +147,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!--Estos links son para los iconos-->
+        <!--Estos links son para los iconos-->
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
+    
     <!--Esta linea es para el js-->
-    <script src="/js/mascotas.js"></script>
-</body>
-
-</html>
+    <script src="/js/veterinarias.js"></script>

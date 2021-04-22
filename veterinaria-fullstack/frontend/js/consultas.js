@@ -11,7 +11,6 @@ let consultas = [];
 let mascotas = [];
 let veterinarias = [];
 
-
 const url = "https://veterinaria-backend1.vercel.app";
 
 async function listarConsultas(){

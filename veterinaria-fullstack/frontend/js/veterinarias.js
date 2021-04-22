@@ -15,7 +15,6 @@ const listaVeterinarias = document.getElementById('lista-Veterinarias');
 let veterinarias=[];       //lista
 
 
-
 //Renderizar variable Mascotas en el HTML
 
 async function listaVeterniarias(){//ejecute

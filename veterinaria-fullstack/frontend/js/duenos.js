@@ -15,7 +15,6 @@ const listaDuenos = document.getElementById('lista-duenos');
 let duenos = [];          //lista
 
 
-
 //Renderizar variable Dueños en el HTML
 
 async function listarDuenos() {//ejecute

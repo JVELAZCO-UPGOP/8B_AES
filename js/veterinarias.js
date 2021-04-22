@@ -10,7 +10,6 @@ const btnEliminar = document.getElementById('btn-eliminar');
 const titulo = document.getElementById('exampleModalCenterTitle'); 
 const listaVeterinarias = document.getElementById('lista-Veterinarias'); 
 
-
 let veterinarias=[          //lista
     {
         nombre:"Alejandra",
@@ -29,7 +28,6 @@ let veterinarias=[          //lista
 
     }
 ];
-
 
 //Renderizar variable Mascotas en el HTML
 

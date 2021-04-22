@@ -93,7 +93,6 @@ function editar(index) {          //editar
 }
 
 
-
 function resetModal(){       //Restaurar
    
     nombre.value='Nombre';

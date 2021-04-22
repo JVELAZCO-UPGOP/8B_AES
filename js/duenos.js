@@ -12,7 +12,6 @@ const titulo = document.getElementById('exampleModalCenterTitle');
 const listaDuenos = document.getElementById('lista-duenos'); 
 
 
-
 let duenos = [          //lista
     {
         nombre:"Yosse",

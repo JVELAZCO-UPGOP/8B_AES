@@ -16,7 +16,7 @@
     <!--fin-->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Consultas</title>
+    <title>Veterinaria</title>
 </head>
 
 <body>
@@ -28,8 +28,7 @@
                 aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarColor03">
+            <div class="collapse navbar-collapse" id="navbarColor03"> 
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                   <a class="nav-link active" aria-current="page" href="/index.html">Mascotas</a>
@@ -59,7 +58,6 @@
                 Agregar
             </button>
         </div>
-        
         <!--Fin -->
         <!--  Inicia Tabla-->
         <table class="table table-stripped table-hover">
@@ -67,12 +65,12 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tipo</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Dueño</th>
+                    <th scope="col">Nombre de la Mascota</th>
+                    <th scope="col">Propietarios</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody id="lista-mascotas">
+            <tbody id="lista-mascotas"><!--Esta es la variable-->
                 
             </tbody>
         </table>
@@ -83,36 +81,41 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalCenterTitle">Nueva Consulta</h5>
+              <h5 class="modal-title" id="exampleModalCenterTitle">Nueva Mascota</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <form id="form">
-                    <input type="hidden" id="indice" >
+                <form id="form"><!--Agregamos id-->
+                    <input type="hidden" id="indice" ><!--para editar-->
                     <div class="form-row">
                         <div class="col">
-                            <select id="tipo" class="form-control">
+                            <select id="tipo" class="form-control"><!--Agregamos id-->
                               <option>Tipo animal</option>
                               <option>Perro</option>
                               <option>Gato</option>
                               <option>Pájaro</option>
+                              <option>Reptiles</option>
+                              <option>hamsters</option>
+                              <option>hurones</option>
                               <option>Otro</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                       <div class="col">
-                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre">
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre"><!--Agregamos id-->
                       </div>
                       <div class="col">
-                        <select class="form-control" id="dueno">
-                          <option>Dueño</option>
+                        <select class="form-control" id="propietarios"><!--Agregamos id-->
+                          <option>Propietarios</option>
                           <option>Juan</option>
                           <option>Andrea</option>
                           <option>Carlos</option>
                           <option>Karla</option>
+                          <option>Jose</option>
+                          <option>Mary</option>
                         </select>
                     </div>
                     </div>
@@ -120,7 +123,7 @@
                   </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-eliminar">Cerrar</button>
               <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar">Crear</button>
             </div>
           </div>
@@ -140,8 +143,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-        <!--Esto sonmlink para los iconos-->
+    <!--Estos links son para los iconos-->
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.13.0/js/v4-shims.js"></script>
-    <!--Esta es para el js-->
+    <!--Esta linea es para el js-->
     <script src="/js/mascotas.js"></script>
+</body>
+
+</html>
