@@ -100,7 +100,7 @@ class Pagina extends Component {
     }));
     veterinaria = veterinaria.map((_veterinaria, index) => ({
       valor: index.toString(),
-      etiqueta: `${_veterinaria.nombre} ${_veterinaria.apellido}`,
+      etiqueta: `${_veterinaria.nombre} ${_veterinaria.apellidoP}`,
     }));
     dueno = dueno.map((_dueno, index) => ({
       valor: index.toString(),
