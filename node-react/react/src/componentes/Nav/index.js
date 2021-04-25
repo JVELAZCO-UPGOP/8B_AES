@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
       <Link className="navbar-brand" to="/">
-      Veterinaria Crazy
+        Veterinaria
       </Link>
       <div className="navbar-right" id="navbarColor03">
         <ul className="navbar-nav mr-auto">
@@ -17,17 +17,17 @@ function Nav() {
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/veterinarias">
-            Médico Veterinario
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/duenos">
-            Propietarios
+              Veterinari@s
             </Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/consultas">
               Consultas
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/duenos">
+              Dueños
             </Link>
           </li>
         </ul>

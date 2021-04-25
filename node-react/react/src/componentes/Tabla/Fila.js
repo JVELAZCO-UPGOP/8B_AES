@@ -4,7 +4,7 @@ import "./Fila.css";
 
 const evaluarCampo = ({ entidad, columna }) => {
   if (columna === "veterinaria") {
-    return `${entidad[columna].nombre} ${entidad[columna].apellidoP}`;
+    return `${entidad[columna].nombre} ${entidad[columna].apellido}`;
   }
   if (columna === "mascota") {
     return `${entidad[columna].nombre} (${entidad[columna].tipo})`;

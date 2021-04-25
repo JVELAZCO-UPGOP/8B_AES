@@ -20,19 +20,19 @@ function App() {
         <Route
           path="/veterinarias"
           component={(props) => (
-            <Pagina {...props} titulo="Médicos Veterinarios" entidad="veterinarias" />
+            <Pagina {...props} titulo="Veterinari@s" entidad="veterinarias" />
           )}
-          />
-          <Route
-            path="/consultas"
-            component={(props) => (
-              <Pagina {...props} titulo="Propietarios" entidad="consultas" />
-            )}
         />
         <Route
           path="/duenos"
           component={(props) => (
-            <Pagina {...props} titulo="Propietarios" entidad="duenos" />
+            <Pagina {...props} titulo="Dueñ@s" entidad="duenos" />
+          )}
+        />
+        <Route
+          path="/consultas"
+          component={(props) => (
+            <Pagina {...props} titulo="Consultas" entidad="consultas" />
           )}
         />
       </Switch>

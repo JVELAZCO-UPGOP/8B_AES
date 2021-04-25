@@ -19,7 +19,6 @@ const opcionesIniciales = {
     { valor: "hamsters", etiqueta: "hamsters" },
     { valor: "hurones", etiqueta: "hurones" },
     { valor: "Otro", etiqueta: "Otro" },
-
   ],
   diagnostico: [
     { valor: "Prurito de piel (sarna)", etiqueta: "Prurito de piel (sarna)" },
@@ -43,7 +42,9 @@ class Pagina extends Component {
       method: "POST",
       columnas: [],
       options: opcionesIniciales,
-      search:''
+      search: "",
+      veterinaria: "",
+      mascota: "",
     };
   }
 
@@ -60,17 +61,23 @@ class Pagina extends Component {
   };
 
   listar = async (_evento = null) => {
-    if(_evento){
+    if (_evento) {
       _evento.preventDefault();
     }
-    const { entidad} = this.props;
-    const {search} = this.state;
-    const entidades = await listarEntidad({ entidad , search});
-    let columnas = [];
+    const { entidad } = this.props;
+    const { search, columnas, veterinaria, mascota } = this.state;
+    const entidades = await listarEntidad({
+      entidad,
+      search,
+      columnas,
+      veterinaria,
+      mascota,
+    });
+    let _columnas = [];
     if (Array.isArray(entidades) && entidades.length > 0) {
-      columnas = Object.keys(entidades[0]) || [];
+      _columnas = Object.keys(entidades[0]) || [];
     }
-    this.setState({ entidades, columnas });
+    this.setState({ entidades, columnas: _columnas });
   };
 
   manejarInput = (evento) => {
@@ -105,7 +112,7 @@ class Pagina extends Component {
     }));
     veterinaria = veterinaria.map((_veterinaria, index) => ({
       valor: index.toString(),
-      etiqueta: `${_veterinaria.nombre} ${_veterinaria.apellidoP}`,
+      etiqueta: `${_veterinaria.nombre} ${_veterinaria.apellido}`,
     }));
     dueno = dueno.map((_dueno, index) => ({
       valor: index.toString(),
@@ -132,14 +139,18 @@ class Pagina extends Component {
 
   manejarSearchInput = (evento) => {
     const {
-      target: { value },
+      target: { value, name },
     } = evento;
-    let { search } = this.state;
-    search =  value;
-    this.setState({ search });
+    console.log({ value, name });
+    this.setState({ [name]: value });
   };
 
   componentDidMount() {
+    const { entidad } = this.props;
+    if (entidad === "consultas") {
+      this.obtenerOpcionesBackend({});
+      return;
+    }
     this.listar();
   }
 
@@ -151,10 +162,13 @@ class Pagina extends Component {
     const { columnas, idObjeto, entidades, objeto, options } = this.state;
     return (
       <>
-        <ActionsMenu cambiarModal={this.cambiarModal} 
-        titulo={titulo} 
-        manejarSearchInput={this.manejarSearchInput}
-        buscar={this.listar}
+        <ActionsMenu
+          cambiarModal={this.cambiarModal}
+          titulo={titulo}
+          manejarSearchInput={this.manejarSearchInput}
+          buscar={this.listar}
+          entidad={entidad}
+          options={options}
         />
         <Tabla
           entidades={entidades}
